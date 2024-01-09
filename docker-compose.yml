@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  sensu:
+    image: sensu/sensu:latest
+    restart: unless-stopped
+    command: sensu-backend start
+    networks:
+      - net-sensu
+    ports:
+      - 8180:8080
+      - 8181:8081
+
+networks:
+  net-sensu:
+    external: false
